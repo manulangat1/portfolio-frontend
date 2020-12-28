@@ -1,0 +1,48 @@
+@include mediaSm{
+    *{
+        text-align: center;
+        align-items: center;
+    }
+    header{
+        .web-links{
+            display: none;
+        }
+    }
+    #projects{
+        .gridp{
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@include mediaMd{
+    *{
+        text-align: center;
+        align-items: center;
+    }
+    header{
+        .web-links{
+            display: none;
+        }
+    }
+    #projects{
+        .gridp{
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+@include mediaLg{
+    header{
+        .mobile-links{
+            display: none;
+        }
+    }
+}
+
+@include medialg{
+    header{
+        .mobile-links{
+            display: none;
+        }
+    }
+}

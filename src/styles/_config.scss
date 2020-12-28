@@ -1,0 +1,49 @@
+$primary-color:#f7f7f7;
+$secondary-color:#eece1a;
+$header-color:#181818;
+$show-home-image:true;
+$background-opacity:0.9;
+$home-color:#f7f7f7;
+
+
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+// @mixin background {
+    
+// }
+
+@function set-text-color($color){
+    @if(lightness($color)> 40){
+        @return  #000;
+    } @else {
+        @return #fff;
+    }
+}
+
+
+// Media Query  Mixins 
+@mixin mediaSm {
+    @media screen and (max-width:500px) {
+        @content;
+    }
+}
+
+@mixin mediaMd {
+    @media screen and (max-width:768px) {
+        @content;
+    }
+}
+
+@mixin mediaLg {
+    @media screen and (min-width:769px) and (max-width:1170px) {
+        @content;
+    };
+};
+
+@mixin medialg {
+    @media screen and (min-width:1171px) {
+        @content;
+    };
+};
