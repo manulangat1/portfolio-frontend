@@ -1,5 +1,6 @@
 import {LOGIN_FAIL,LOGIN_USER,LOGOUT,USER_LOADED } from './types';
 import axios from 'axios';
+const { REACT_APP_BASE_URL } = process.env
 
 export const loginUser = ({email,password}) => dispatch => {
     const config = {
@@ -9,7 +10,7 @@ export const loginUser = ({email,password}) => dispatch => {
     }
     const  body = JSON.stringify({email,password})
     console.log(body)
-    axios.post('/auth/login',body,config)
+    axios.post(REACT_APP_BASE_URL + '/auth/login',body,config)
         .then( res =>{
             console.log(res.data.data.token)
             dispatch({
@@ -27,7 +28,7 @@ export const loginUser = ({email,password}) => dispatch => {
 
 export const loadUser = () => (dispatch,getState) => {
 
-    axios.get('/auth/user/',tokenConfig(getState))
+    axios.get(REACT_APP_BASE_URL + '/auth/user/',tokenConfig(getState))
         .then(res => {
             dispatch({
                 type:USER_LOADED,
@@ -38,7 +39,7 @@ export const loadUser = () => (dispatch,getState) => {
 }
 export const logout = () => (dispatch,getState) => {
     
-    axios.get('/auth/user/',tokenConfig(getState))
+    axios.get(REACT_APP_BASE_URL + '/auth/user/',tokenConfig(getState))
         .then(res => {
             dispatch({
                 type:LOGOUT,

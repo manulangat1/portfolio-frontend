@@ -1,9 +1,9 @@
 import axios from 'axios';
 import {FETCH_PROJECTS,ADD_PROJECTS }  from './types'
 import { tokenConfig, tokenConfigForm } from './auth'
-
+const { REACT_APP_BASE_URL } = process.env
 export const fetchProject = () => dispatch => {
-    axios.get('/project')
+    axios.get(REACT_APP_BASE_URL + '/project')
         .then(res => {
             dispatch({
                 type:FETCH_PROJECTS,
@@ -32,7 +32,7 @@ export const addProject = ({title, content, liveLink, githubLink,image}) => (dis
         config.headers['Authorization'] = `Bearer ${token}`
     }
     console.log(tokenConfigForm(getState))
-    axios.post('/project',body,tokenConfigForm(getState))
+    axios.post(REACT_APP_BASE_URL + '/project',body,tokenConfigForm(getState))
         .then(res => {
             dispatch({
                 type:ADD_PROJECTS,
